@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Allow access only if the QR code parameter is present
+RewriteCond %{QUERY_STRING} !^qr=auksion2023$
+RewriteCond %{REQUEST_URI} !^/access-denied\.html$
+RewriteCond %{REQUEST_URI} !^/robots\.txt$
+RewriteRule ^ /access-denied.html [L,R=302]
+
+# Block directory listing
+Options -Indexes
